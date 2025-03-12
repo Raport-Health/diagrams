@@ -1,0 +1,83 @@
+graph TD
+    %% Client Side
+    subgraph "Client Side (React Frontend)"
+        A[User Interface] --> B[React Components]
+        B --> C1[Authentication Pages]
+        B --> C2[Dashboard Pages]
+        B --> C3[Admin Dashboard]
+        B --> C4[Document Features]
+        
+        D[State Management] --> E1[Auth Store]
+        D --> E2[Document Store]
+        D --> E3[Summary Store]
+        D --> E4[Chat Store]
+        D --> E5[Folder Store]
+        
+        F[Services] --> G1[API Services]
+        F --> G2[Authentication Services]
+        F --> G3[Document Services]
+        F --> G4[Summary Services]
+        F --> G5[Chat Services]
+    end
+    
+    %% Server Side
+    subgraph "Server Side (Node.js Backend)"
+        H[API Routes] --> I1[Authentication Routes]
+        H --> I2[Document Routes]
+        H --> I3[Folder Routes]
+        H --> I4[Summaries Routes]
+        H --> I5[Chat Routes]
+        
+        J[Controllers] --> K1[AuthController]
+        J --> K2[DocumentController]
+        J --> K3[FolderController]
+        J --> K4[SummeriesController]
+        J --> K5[ChatController]
+        
+        L[Middleware] --> M1[Authentication Middleware]
+        L --> M2[File Upload Middleware]
+        L --> M3[Error Handling Middleware]
+        L --> M4[CORS Configuration]
+        
+        N[Models] --> O1[User Model]
+        N --> O2[Document Model]
+        N --> O3[Folder Model]
+        N --> O4[Summary Model]
+        N --> O5[Chat Model]
+        
+        P[Database] --> Q[MongoDB]
+        
+        R[External Services] --> S1[OAuth Providers]
+        R --> S2[AI Services]
+    end
+    
+    %% Connections between Client and Server
+    G1 --> H
+    I1 --> K1
+    I2 --> K2
+    I3 --> K3
+    I4 --> K4
+    I5 --> K5
+    
+    K1 --> O1
+    K2 --> O2
+    K3 --> O3
+    K4 --> O4
+    K5 --> O5
+    
+    O1 --> Q
+    O2 --> Q
+    O3 --> Q
+    O4 --> Q
+    O5 --> Q
+    
+    K1 --> S1
+    K4 --> S2
+    K5 --> S2
+    
+    %% Data Flow
+    A --> G1
+    G1 --> H
+    H --> J
+    J --> N
+    N --> P 

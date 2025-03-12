@@ -1,0 +1,74 @@
+# Document Organization Software Architecture
+
+## Client Side (React Frontend)
+- **Pages**
+  - Authentication Pages (Login, Register, Password Reset)
+  - Dashboard Pages (Document Management, Profile Update)
+  - Admin Dashboard (User Management, KYC Management, Admin Document Management)
+  - Document Features (Upload, Summaries, Chat)
+
+- **State Management (Redux)**
+  - Auth Store (User Authentication, Profile Management)
+  - Document Store (Document CRUD Operations)
+  - Summary Store (Document Summarization)
+  - Chat Store (AI Chat Functionality)
+  - Folder Store (Folder Management)
+
+- **Services**
+  - API Services (HTTP Requests to Backend)
+  - Authentication Services
+  - Document Services
+  - Summary Services
+  - Chat Services
+
+## Server Side (Node.js Backend)
+- **API Routes**
+  - Authentication Routes (/api/auth/*)
+  - Document Routes (/api/doc/*)
+  - Folder Routes (/api/folder/*)
+  - Summaries Routes (/api/summeries/*)
+  - Chat Routes (/api/chat/*)
+
+- **Controllers**
+  - AuthController (User Authentication, Registration, Profile Management)
+  - DocumentController (Document Upload, Management, Categorization)
+  - FolderController (Folder Creation, Document Organization)
+  - SummeriesController (Document Summarization)
+  - ChatController (AI Chat Functionality)
+
+- **Middleware**
+  - Authentication Middleware (JWT Validation)
+  - File Upload Middleware
+  - Error Handling Middleware
+  - CORS Configuration
+
+- **Models**
+  - User Model
+  - Document Model
+  - Folder Model
+  - Summary Model
+  - Chat Model
+
+- **Database**
+  - MongoDB (Document Storage)
+
+- **External Services**
+  - OAuth Providers (Google, Facebook)
+  - AI Services for Chat and Summarization
+
+## Data Flow
+1. User authenticates via frontend authentication pages
+2. JWT token is generated and stored for subsequent requests
+3. User interacts with document management features
+4. API requests are sent to appropriate backend routes
+5. Controllers process requests and interact with models
+6. Database operations are performed
+7. Responses are sent back to frontend
+8. Frontend updates state and UI accordingly
+
+## Security Features
+- JWT Authentication
+- OAuth Integration
+- Secure File Upload
+- API Endpoint Protection
+- CORS Security Configuration 

@@ -1,0 +1,57 @@
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant AuthService
+    participant DocService
+    participant SummaryService
+    participant ChatService
+    participant Database
+    participant AI
+    
+    %% Authentication Flow
+    User->>Frontend: Access Application
+    Frontend->>AuthService: Request Authentication
+    AuthService->>Database: Validate Credentials
+    Database-->>AuthService: Return User Data
+    AuthService-->>Frontend: Return JWT Token
+    Frontend-->>User: Display Dashboard
+    
+    %% Document Upload Flow
+    User->>Frontend: Upload Document
+    Frontend->>DocService: Send Document
+    DocService->>Database: Store Document Metadata
+    DocService-->>Frontend: Confirm Upload
+    Frontend-->>User: Display Success
+    
+    %% Document Organization Flow
+    User->>Frontend: Organize Documents
+    Frontend->>DocService: Request Categories/Labels
+    DocService->>Database: Retrieve Categories
+    Database-->>DocService: Return Categories
+    DocService-->>Frontend: Display Categories
+    User->>Frontend: Assign Category
+    Frontend->>DocService: Update Document Category
+    DocService->>Database: Store Category Assignment
+    Database-->>DocService: Confirm Update
+    DocService-->>Frontend: Display Updated Document
+    
+    %% Document Summary Flow
+    User->>Frontend: Request Document Summary
+    Frontend->>SummaryService: Send Summary Request
+    SummaryService->>Database: Retrieve Document
+    Database-->>SummaryService: Return Document
+    SummaryService->>AI: Generate Summary
+    AI-->>SummaryService: Return Summary
+    SummaryService->>Database: Store Summary
+    SummaryService-->>Frontend: Display Summary
+    Frontend-->>User: View Summary
+    
+    %% AI Chat Flow
+    User->>Frontend: Send Chat Message
+    Frontend->>ChatService: Forward Message
+    ChatService->>Database: Retrieve Context (if needed)
+    Database-->>ChatService: Return Context
+    ChatService->>AI: Process Message with Context
+    AI-->>ChatService: Generate Response
+    ChatService-->>Frontend: Display Response
+    Frontend-->>User: View AI Response 

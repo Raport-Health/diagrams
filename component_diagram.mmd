@@ -1,0 +1,74 @@
+graph TD
+    %% Main Components
+    Client[Client Application] --> API[API Gateway]
+    API --> Auth[Authentication Service]
+    API --> Doc[Document Service]
+    API --> Folder[Folder Service]
+    API --> Summary[Summary Service]
+    API --> Chat[Chat Service]
+    
+    %% Authentication Routes
+    Auth --> Auth1[User Registration]
+    Auth --> Auth2[User Login]
+    Auth --> Auth3[Password Management]
+    Auth --> Auth4[User Management]
+    Auth --> Auth5[Admin Management]
+    Auth --> Auth6[KYC Management]
+    Auth --> Auth7[OAuth Integration]
+    
+    %% Document Routes
+    Doc --> Doc1[Document Upload]
+    Doc --> Doc2[Document Retrieval]
+    Doc --> Doc3[Document Labeling]
+    Doc --> Doc4[Document Categorization]
+    Doc --> Doc5[Document Deletion]
+    Doc --> Doc6[Patient Management]
+    Doc --> Doc7[Category Management]
+    
+    %% Folder Routes
+    Folder --> Folder1[Folder Creation]
+    Folder --> Folder2[Add Documents to Folder]
+    
+    %% Summary Routes
+    Summary --> Summary1[Document Summaries]
+    Summary --> Summary2[File Summaries]
+    
+    %% Chat Routes
+    Chat --> Chat1[Regular Chat]
+    Chat --> Chat2[Context-Aware Chat]
+    
+    %% Database
+    Auth --> DB[MongoDB]
+    Doc --> DB
+    Folder --> DB
+    Summary --> DB
+    Chat --> DB
+    
+    %% External Services
+    Auth --> OAuth[OAuth Providers]
+    Summary --> AI1[AI Summarization Service]
+    Chat --> AI2[AI Chat Service]
+    
+    %% Middleware
+    Middleware[Middleware Layer] --> Auth
+    Middleware --> Doc
+    Middleware --> Folder
+    Middleware --> Summary
+    Middleware --> Chat
+    
+    %% Client Components
+    Client --> AuthUI[Authentication UI]
+    Client --> DocUI[Document Management UI]
+    Client --> FolderUI[Folder Management UI]
+    Client --> SummaryUI[Summary UI]
+    Client --> ChatUI[Chat UI]
+    Client --> AdminUI[Admin Dashboard UI]
+    
+    %% Data Flow
+    AuthUI --> Auth
+    DocUI --> Doc
+    FolderUI --> Folder
+    SummaryUI --> Summary
+    ChatUI --> Chat
+    AdminUI --> Auth
+    AdminUI --> Doc 
